@@ -10,6 +10,7 @@ namespace TutorGuide.Models
     public class StudentProfile
     {
         public int Id { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string ParmanentAddress { get; set; }
@@ -20,9 +21,6 @@ namespace TutorGuide.Models
         public string InstituteName{ get; set; }
         public string Class { get; set; }
         public string Version { get; set; }
-
         public DateTime RegisterDate { get; set; }
-        
-
     }
 }

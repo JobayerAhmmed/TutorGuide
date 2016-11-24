@@ -1,0 +1,54 @@
+﻿<script src="~/Scripts/angular/SearchCtrl.js"></script>
+@{
+    ViewBag.Title = "SearchTutor";
+}
+
+<h2>Search Tutor</h2>
+
+<div ng-app="systemApp" ng-controller="searchCtrl">
+    
+    <label>Search by any field <input type="text" ng-model="search.$" /></label><br /><br />
+    <label>Search by the following info</label><br />
+    <div class="row">
+        <div class="col-md-3">
+            <label>Department/Subject</label>&nbsp;<input type="text" ng-model="search.Department" />
+        </div>
+        <div class="col-md-3">
+            <label>Year</label>&nbsp;<input type="text" ng-model="search.CurrentYear" />
+        </div>
+        <div class="col-md-3">
+            <label>Location</label>&nbsp;<input type="text" ng-model="search.PresentAddress" />
+        </div>
+        <div class="col-md-3">
+            <label>Interested Class</label>&nbsp;<input type="text" ng-model="search.InterestedClass" />
+        </div>
+        
+    </div><br /><br />
+
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Address</th>
+            <th>Year</th>
+            <th>ExpectedSalaryRange</th>
+            <th>InterestedClass</th>
+            <th>InterestedSubject</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tutor in allTutor | filter: search">
+                <td>{{tutor.Name}}</td>
+                <td>{{tutor.Department}}</td>
+                <td>{{tutor.PresentAddress}}</td>
+                <td>{{tutor.CurrentYear}}</td>
+                <td>{{tutor.ExpectedSalaryRange}}</td>
+                <td>{{tutor.InterestedClass}}</td>
+                <td>{{tutor.InterestedSubject}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+

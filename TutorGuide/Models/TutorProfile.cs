@@ -17,6 +17,7 @@ namespace TutorGuide.Models
         public string Hall { get; set; }
         public string AdmissionSession { get; set; }
         public int CurrentYear { get; set; }
+        public int VarsityRegistrationNo { get; set; }
 
         public string ParmanentAddress { get; set; }
         public string PresentAddress { get; set; }

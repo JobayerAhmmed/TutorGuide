@@ -31,5 +31,16 @@ namespace TutorGuide.Controllers
              
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult SearchTutor()
+        {
+            return View();
+        }
+
+        public JsonResult GetAllTutor()
+        {
+            var tutors = _dbContext.TutorProfiles.ToList();
+            return Json(tutors, JsonRequestBehavior.AllowGet);
+        }
     }
 }

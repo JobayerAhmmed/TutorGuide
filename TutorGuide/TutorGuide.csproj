@@ -1070,6 +1070,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular\SearchCtrl.js" />
+    <Content Include="Scripts\angular\SystemApp.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap\css\bootstrap.css.map" />
@@ -1165,6 +1167,8 @@
     <Content Include="Views\Student\RegisterStudent.cshtml" />
     <Content Include="Views\Tutor\RegisterTutor.cshtml" />
     <Content Include="Views\Post\CreatePost.cshtml" />
+    <Content Include="Views\Post\SearchPost.cshtml" />
+    <Content Include="Views\Student\SearchTutor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

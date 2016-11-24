@@ -52,9 +52,29 @@ namespace TutorGuide.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Search()
+        public ActionResult SearchPost()
         {
             return View();
+        }
+
+        public JsonResult GetAllPost()
+        {
+            var postVM = (from post in _dbContext.Posts
+                          join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
+                          select new PostViewModel
+                          {
+                              Name = student.Name,
+                              InstituteName = student.InstituteName,
+                              Class = student.Class,
+                              Version = student.Version,
+                              Salary = post.Salary,
+                              IsNegotiable = post.IsNegotiable,
+                              DaysPerWeek = post.DaysPerWeek,
+                              Subjects = post.Subjects,
+                              PresentAddress = student.PresentAddress,
+                              Date = post.Date
+                          }).ToList();
+            return Json(postVM, JsonRequestBehavior.AllowGet);
         }
     }
 }

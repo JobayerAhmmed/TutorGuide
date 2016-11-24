@@ -29,21 +29,23 @@ namespace TutorGuide.Controllers
                     Subjects = post.Subjects,
                     PresentAddress = student.PresentAddress,
                     Date = post.Date
-                }).FirstOrDefault();
+                }).ToList();
 
             
             return View(postVM);
         }
 
         [HttpGet]
-        public ActionResult Post()
+        public ActionResult CreatePost()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult RegisterTutor(Post post)
+        public ActionResult CreatePost(Post post)
         {
+            int studentId= 0;
+            post.StudentId = studentId;
             _dbContext.Posts.Add(post);
             _dbContext.SaveChanges();
 

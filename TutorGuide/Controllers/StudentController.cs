@@ -105,5 +105,16 @@ namespace TutorGuide.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+
+        public ActionResult SearchTutor()
+        {
+            return View();
+        }
+
+        public JsonResult GetAllTutor()
+        {
+            var tutors = _dbContext.TutorProfiles.ToList();
+            return Json(tutors, JsonRequestBehavior.AllowGet);
+        }
     }
 }

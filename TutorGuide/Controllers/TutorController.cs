@@ -15,7 +15,8 @@ namespace TutorGuide.Controllers
         // GET: Tutor
         public ActionResult Index()
         {
-            return View();
+            var tutors = _dbContext.TutorProfiles.ToList();
+            return View(tutors);
         }
 
         [HttpGet]
@@ -29,7 +30,6 @@ namespace TutorGuide.Controllers
         {
             _dbContext.TutorProfiles.Add(tutor);
             _dbContext.SaveChanges();
-
             return RedirectToAction("Index", "Home");
         }
     }

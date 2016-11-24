@@ -25,9 +25,9 @@ namespace TutorGuide.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterTutor(TutorProfile tutor)
+        public ActionResult RegisterTutor(Post post)
         {
-            _dbContext.TutorProfiles.Add(tutor);
+            _dbContext.Posts.Add(post);
             _dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Home");

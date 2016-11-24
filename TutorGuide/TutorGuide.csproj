@@ -1162,11 +1162,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Student\RegisterStudent.cshtml" />
+    <Content Include="Views\Post\Post.cshtml" />
+    <Content Include="Views\Tutor\RegisterTutor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Post\" />
-    <Folder Include="Views\Tutor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

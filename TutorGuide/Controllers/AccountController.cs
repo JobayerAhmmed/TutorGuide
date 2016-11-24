@@ -52,6 +52,25 @@ namespace TutorGuide.Controllers
             }
         }
 
+        public ActionResult LoadProfile()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                //var userId = User.Identity.GetUserId();
+                //var user = UserManager.FindById(userId);
+
+                //var profile = new ProfileViewModel();
+                //profile.Id = user.Id;
+                //profile.FullName = user.FullName;
+                //profile.Designation = user.Designation;
+                //profile.ImagePath = user.ImagePath;
+
+                //return PartialView("_LoginPartial", profile);
+            }
+
+            return PartialView("_LoginPartial");
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

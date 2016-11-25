@@ -50,7 +50,13 @@ namespace TutorGuide.Controllers
         [HttpGet]
         public ActionResult RegisterStudent()
         {
-            return View();
+            Data data = new Data();
+            RegisterStudentViewModel model = new RegisterStudentViewModel();
+
+            model.Versions = data.Versions;
+            model.Classes = data.Classes;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -77,6 +83,7 @@ namespace TutorGuide.Controllers
                     student.FatherName = model.FatherName;
                     student.FatherOccupation = model.FatherOccupation;
                     student.RegisterDate = DateTime.Now;
+                    student.Version = model.Version;
                     student.Class = model.Class;
                     student.UserId = user.Id;
 
@@ -89,21 +96,14 @@ namespace TutorGuide.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string msg = "Registration successful. Please log in to continue.";
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new { message = msg });
                 }
                 AddErrors(result);
             }
 
             return View(model);
-        }
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
         }
 
         public ActionResult SearchTutor()
@@ -115,6 +115,14 @@ namespace TutorGuide.Controllers
         {
             var tutors = _dbContext.TutorProfiles.ToList();
             return Json(tutors, JsonRequestBehavior.AllowGet);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }

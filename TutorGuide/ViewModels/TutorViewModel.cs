@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace TutorGuide.Models
+namespace TutorGuide.ViewModels
 {
-    [Table("TutorProfile")]
-    public class TutorProfile
+    public class TutorViewModel
     {
         public int Id { get; set; }
         public string UserId { get; set; }
@@ -21,7 +19,7 @@ namespace TutorGuide.Models
         public string CurrentYear { get; set; }
         public string RegistrationNo { get; set; }
 
-        public string ParmanentAddress { get; set; }
+        public string PermanentAddress { get; set; }
         public string PresentAddress { get; set; }
 
         public string ExpectedSalaryRange { get; set; }

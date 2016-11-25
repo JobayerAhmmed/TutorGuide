@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TutorGuide.ViewModels.TutorIndexViewModel>
+
+@{
+    ViewBag.Title = "Tutor Guide";
+}
+
+<section class="content-header">
+    <h1>List of Tutors</h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <img src="@Url.Content("~/Content/UserImage/" + item.ImagePath)"
+                             class="img-responsive user-img"
+                             alt="Image" />
+                        <h3 class="profile-username text-center">@item.Name</h3>
+                        <p class="text-center">
+                            <span class="text-bold">@item.Department</span>
+                            <br /><span class="text-muted">@item.CurrentYear</span>
+                        </p>
+                    </div>
+                    <div class="box-footer text-center">
+                        @Html.ActionLink("Details", "Details", "Tutor", new { id = item.Id }, new { @class = "btn btn-primary btn-flat" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

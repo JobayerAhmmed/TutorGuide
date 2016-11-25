@@ -1,0 +1,77 @@
+﻿@model TutorGuide.ViewModels.TutorViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<section class="content-header text-center">
+    <h1>Details of @Model.Name</h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-6 col-md-offset-3">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img src="@Url.Content("~/Content/UserImage/" + Model.ImagePath)"
+                         class="img-responsive user-img"
+                         alt="User Image" />
+                    <h3 class="profile-username text-center">@Model.Name</h3>
+                    <p class="text-muted text-center">@Model.Department</p>
+                    <table class="table table-responsive table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>@Model.Name</td>
+                            </tr>
+                            <tr>
+                                <td>Department</td>
+                                <td>@Model.Department</td>
+                            </tr>
+                            <tr>
+                                <td>Current Year</td>
+                                <td>@Model.CurrentYear</td>
+                            </tr>
+                            <tr>
+                                <td>Interested Classes</td>
+                                <td>@Model.InterestedClass</td>
+                            </tr>
+                            <tr>
+                                <td>Interested Subjects</td>
+                                <td>@Model.InterestedSubject</td>
+                            </tr>
+                            <tr>
+                                <td>Interested Areas</td>
+                                <td>@Model.InterestedArea</td>
+                            </tr>
+                            <tr>
+                                <td>Expected Payment</td>
+                                <td>@Model.ExpectedSalaryRange</td>
+                            </tr>
+                            <tr>
+                                <td>Admission Session</td>
+                                <td>@Model.AdmissionSession</td>
+                            </tr>
+                            <tr>
+                                <td>Residential Hall Name</td>
+                                <td>@Model.Hall</td>
+                            </tr>
+                            <tr>
+                                <td>Present Address</td>
+                                <td>@Model.PresentAddress</td>
+                            </tr>
+                            <tr>
+                                <td>Permanent Address</td>
+                                <td>@Model.PermanentAddress</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer text-center">
+                    @Html.ActionLink("Back to Tutors", "Index", "Tutor", null, new { @class = "btn btn-primary btn-flat" })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

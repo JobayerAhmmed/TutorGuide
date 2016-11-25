@@ -5,3 +5,10 @@
 .middle {
     margin: auto;
 }
+.user-img{
+    width: 120px;
+    height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}

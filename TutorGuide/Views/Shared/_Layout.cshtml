@@ -47,25 +47,29 @@
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                @Html.ActionLink("Tutions", "Index", "Post", null)
+                                @Html.ActionLink("Tutions", "Index", "Post", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("Search Tutions", "Search", "Post", null)
+                                @Html.ActionLink("Search Tutions", "Search", "Post", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("Tutors", "Index", "Tutor", null)
+                                @Html.ActionLink("Tutors", "Index", "Tutor", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("Search Tutors", "Search", "Tutor", null)
+                                @Html.ActionLink("Search Tutors", "Search", "Tutor", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("FAQ", "Faq", "Home", null)
+                                @Html.ActionLink("FAQ", "Faq", "Home", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("Contact Us", "Contact", "Home", null)
+                                @Html.ActionLink("Contact Us", "Contact", "Home", null, null)
                             </li>
-                            <li>@Html.ActionLink("Student Registration", "RegisterStudent", "Student", null, null)</li>
-                            <li>@Html.ActionLink("Tutor Registration", "RegisterTutor", "Tutor", null, null)</li>
+                            <li>
+                                @Html.ActionLink("Student Registration", "RegisterStudent", "Student", null, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Tutor Registration", "RegisterTutor", "Tutor", null, null)
+                            </li>
                         </ul>
                     </div>
                     <div class="navbar-custom-menu">

@@ -61,6 +61,7 @@ namespace TutorGuide.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
                         Name = c.String(),
                         PhoneNumber = c.String(),
                         ParmanentAddress = c.String(),
@@ -79,13 +80,16 @@ namespace TutorGuide.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
                         Name = c.String(),
                         Email = c.String(),
                         PhoneNumber = c.String(),
+                        ImagePath = c.String(),
                         Department = c.String(),
                         Hall = c.String(),
                         AdmissionSession = c.String(),
-                        CurrentYear = c.Int(nullable: false),
+                        CurrentYear = c.String(),
+                        RegistrationNo = c.String(),
                         ParmanentAddress = c.String(),
                         PresentAddress = c.String(),
                         ExpectedSalaryRange = c.String(),

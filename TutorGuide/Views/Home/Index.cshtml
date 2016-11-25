@@ -7,5 +7,18 @@
 </section>
 
 <section class="content">
-
+    <div id="timeout" class="panel panel-default">
+        <div class="panel-body">
+            @ViewBag.Message
+        </div>
+    </div>
 </section>
+@section Scripts {
+    <script>
+        $(function () {
+            setTimeout(function () {
+                $("#timeout").fadeOut("slow");
+            }, 3000);
+        });
+    </script>
+}

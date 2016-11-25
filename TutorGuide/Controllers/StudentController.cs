@@ -74,6 +74,8 @@ namespace TutorGuide.Controllers
                 var result = UserManager.Create(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "Student");
+
                     StudentProfile student = new StudentProfile();
                     student.Name = model.Name;
                     student.PhoneNumber = model.PhoneNumber;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,31 @@ namespace TutorGuide.Controllers
     public class PostController : Controller
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         public ActionResult Index()
         {
@@ -70,11 +97,14 @@ namespace TutorGuide.Controllers
             if (ModelState.IsValid)
             {
                 Post p = new Post();
+                var userId = User.Identity.GetUserId();
+                var student = _dbContext.StudentProfiles.Where(s => s.UserId == userId).FirstOrDefault();
+
                 p.DaysPerWeek = post.DaysPerWeek;
                 p.IsNegotiable = post.IsNegotiable;
                 p.Salary = post.Salary;
                 p.Subjects = post.Subjects;
-                p.StudentId = 1;
+                p.StudentId = student.Id;
 
                 _dbContext.Posts.Add(post);
                 _dbContext.SaveChanges();

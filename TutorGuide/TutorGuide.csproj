@@ -202,8 +202,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CheckBoxListItem.cs" />
     <Compile Include="ViewModels\Data.cs" />
+    <Compile Include="ViewModels\DataItem.cs" />
     <Compile Include="ViewModels\PostDetailsViewModel.cs" />
     <Compile Include="ViewModels\PostIndexViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RegisterStudentViewModel.cs" />
     <Compile Include="ViewModels\RegisterTutorViewModel.cs" />
     <Compile Include="ViewModels\TutorIndexViewModel.cs" />

@@ -9,12 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TutorGuide.Models;
+using TutorGuide.ViewModels;
+using TutorGuide.Repository;
 
 namespace TutorGuide.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext context = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -54,22 +57,29 @@ namespace TutorGuide.Controllers
 
         public ActionResult LoadProfile()
         {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    //var userId = User.Identity.GetUserId();
-            //    //var user = UserManager.FindById(userId);
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                var user = UserManager.FindById(userId);
 
-            //    //var profile = new ProfileViewModel();
-            //    //profile.Id = user.Id;
-            //    //profile.FullName = user.FullName;
-            //    //profile.Designation = user.Designation;
-            //    //profile.ImagePath = user.ImagePath;
+                var profile = new ProfileViewModel();
+                profile.Id = user.Id;
 
-            //    //return PartialView("_LoginPartial", profile);
-            //    return PartialView("_LoginPartial");
-            //}
+                if (User.IsInRole("Student"))
+                {
+                    var student = context.StudentProfiles.Find(userId);
+                    profile.Name = student.Name;
+                }else if (User.IsInRole("Tutor"))
+                {
+                    var tutor = context.TutorProfiles.Find(userId);
+                    profile.Name = tutor.Name;
+                    profile.ImagePath = tutor.ImagePath;
+                }
 
-            return PartialView("_LoginPartial");
+                return PartialView("_LoginPartial", profile);
+            }
+
+            return null;
         }
 
         //
@@ -77,7 +87,12 @@ namespace TutorGuide.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            if (User.Identity.IsAuthenticated)
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                return RedirectToAction("Login", "Account", new { returnUrl = returnUrl });
+            }
+            ViewBag.ReturnUrl = null;
             return View();
         }
 
@@ -95,7 +110,7 @@ namespace TutorGuide.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.PhoneNumber, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:

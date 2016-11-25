@@ -59,8 +59,8 @@ namespace TutorGuide.ViewModels
         public string InterestedSubjects { get; set; }
         //public string InterestedAreas { get; set; }
 
-        public IEnumerable<string> Departments { get; set; }
-        public IEnumerable<string> Years { get; set; }
+        public IEnumerable<DataItem> Departments { get; set; }
+        public IEnumerable<DataItem> Years { get; set; }
         public List<CheckBoxListItem> Classes { get; set; }
         //public List<CheckBoxListItem> Subjects { get; set; }
         public List<CheckBoxListItem> Areas { get; set; }
@@ -71,11 +71,11 @@ namespace TutorGuide.ViewModels
             {
                 var departments = Departments.Select(d => new SelectListItem
                 {
-                    Value = d,
-                    Text = d,
+                    Value = d.Value,
+                    Text = d.Value,
                     Selected = false
                 });
-                return departments.ToList();
+                return departments;
             }
         }
         public IEnumerable<SelectListItem> YearList
@@ -84,8 +84,8 @@ namespace TutorGuide.ViewModels
             {
                 var years = Years.Select(d => new SelectListItem
                 {
-                    Value = d,
-                    Text = d,
+                    Value = d.Value,
+                    Text = d.Value,
                     Selected = false
                 });
                 return years.ToList();

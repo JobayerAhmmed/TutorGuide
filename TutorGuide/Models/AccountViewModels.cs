@@ -54,6 +54,10 @@ namespace TutorGuide.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

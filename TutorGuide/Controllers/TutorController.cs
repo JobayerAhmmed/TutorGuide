@@ -42,7 +42,7 @@ namespace TutorGuide.Controllers
         }
 
         // GET: Tutor
-        public ActionResult Index()
+        public ActionResult Index(string message)
         {
             List<TutorIndexViewModel> model = new List<TutorIndexViewModel>();
             TutorIndexViewModel vm = new TutorIndexViewModel();
@@ -63,6 +63,7 @@ namespace TutorGuide.Controllers
                 model.Add(vm);
                 vm = new TutorIndexViewModel();
             }
+            ViewBag.Message = message;
             return View(model.ToList());
         }
 
@@ -208,7 +209,7 @@ namespace TutorGuide.Controllers
 
                     string msg = "Registration successful. Please log in to continue.";
 
-                    return RedirectToAction("Index", "Home", new { message = msg });
+                    return RedirectToAction("Index", "Tutor", new { message = msg });
                 }
                 AddErrors(result);
             }

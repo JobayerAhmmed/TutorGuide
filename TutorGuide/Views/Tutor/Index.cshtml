@@ -8,6 +8,15 @@
     <h1>List of Tutors</h1>
 </section>
 
+@if (ViewBag.Message != null)
+{
+    <div id="timeout" class="panel panel-default">
+        <div class="panel-body">
+            @ViewBag.Message
+        </div>
+    </div>
+}
+
 <section class="content">
     <div class="row">
         @foreach (var item in Model)
@@ -32,3 +41,12 @@
         }
     </div>
 </section>
+@section Scripts {
+    <script>
+        $(function () {
+            setTimeout(function () {
+                $("#timeout").fadeOut("slow");
+            }, 3000);
+        });
+    </script>
+}

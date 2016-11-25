@@ -180,6 +180,14 @@
     <Compile Include="Migrations\201611251430460_Initial.Designer.cs">
       <DependentUpon>201611251430460_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611251747315_DateTime.cs" />
+    <Compile Include="Migrations\201611251747315_DateTime.Designer.cs">
+      <DependentUpon>201611251747315_DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611251759312_DateRemoved.cs" />
+    <Compile Include="Migrations\201611251759312_DateRemoved.Designer.cs">
+      <DependentUpon>201611251759312_DateRemoved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Communication.cs" />
@@ -194,6 +202,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CheckBoxListItem.cs" />
     <Compile Include="ViewModels\Data.cs" />
+    <Compile Include="ViewModels\PostDetailsViewModel.cs" />
+    <Compile Include="ViewModels\PostIndexViewModel.cs" />
     <Compile Include="ViewModels\RegisterStudentViewModel.cs" />
     <Compile Include="ViewModels\RegisterTutorViewModel.cs" />
     <Compile Include="ViewModels\TutorIndexViewModel.cs" />
@@ -1177,6 +1187,8 @@
     <Content Include="Views\Student\SearchTutor.cshtml" />
     <Content Include="Views\Tutor\Index.cshtml" />
     <Content Include="Views\Tutor\Details.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1193,6 +1205,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611251430460_Initial.resx">
       <DependentUpon>201611251430460_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611251747315_DateTime.resx">
+      <DependentUpon>201611251747315_DateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611251759312_DateRemoved.resx">
+      <DependentUpon>201611251759312_DateRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

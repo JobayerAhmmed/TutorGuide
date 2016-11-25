@@ -7,11 +7,15 @@
 </section>
 
 <section class="content">
-    <div id="timeout" class="panel panel-default">
-        <div class="panel-body">
-            @ViewBag.Message
+    @if (ViewBag.Message != null)
+    {
+        <div id="timeout" class="panel panel-default">
+            <div class="panel-body">
+                @ViewBag.Message
+            </div>
         </div>
-    </div>
+    }
+    
 </section>
 @section Scripts {
     <script>

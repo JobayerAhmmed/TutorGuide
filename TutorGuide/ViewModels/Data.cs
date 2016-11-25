@@ -17,7 +17,7 @@ namespace TutorGuide.ViewModels
                     "English",
                     "English Medium"
                 };
-                return versions;
+                return versions.ToList();
             }
         }
         public List<string> Classes

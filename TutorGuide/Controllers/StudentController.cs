@@ -62,7 +62,7 @@ namespace TutorGuide.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult RegisterStudent(RegisterStudentViewModel model)
+        public ActionResult RegisterStudent([Bind(Exclude = "VersionList, ClassList")]RegisterStudentViewModel model)
         {
             if (ModelState.IsValid)
             {

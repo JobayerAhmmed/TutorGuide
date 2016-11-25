@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace TutorGuide.Models
+namespace TutorGuide.ViewModels
 {
-    [Table("Post")]
-    public class Post
+    public class PostIndexViewModel
     {
         public int Id { get; set; }
-        public int StudentId { get; set; }
         public int Salary { get; set; }
-        public bool IsNegotiable { get; set; }
         public int DaysPerWeek { get; set; }
         public string Subjects { get; set; }
+        public string InstituteName { get; set; }
+        public string Class { get; set; }
+        public string Version { get; set; }
     }
 }

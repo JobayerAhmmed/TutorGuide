@@ -47,26 +47,31 @@
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                @Html.ActionLink("Tuitions", "Index", "Post", null, null)
+                                @Html.ActionLink("All Posts", "Index", "Post", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("Search Tuitions", "Search", "Post", null, null)
+                                @Html.ActionLink("Search Post", "SearchPost", "Post", null, null)
                             </li>
-                            <li>
-                                @Html.ActionLink("Post Tuition", "CreatePost", "Post", null, null)
-                            </li>
+                            
+                            @if (User.IsInRole("Student"))
+                            {
+                                <li>
+                                    @Html.ActionLink("Post Tuition", "CreatePost", "Post", null, null)
+                                </li>
+                            }
+                            
                             <li>
                                 @Html.ActionLink("Tutors", "Index", "Tutor", null, null)
                             </li>
                             <li>
-                                @Html.ActionLink("Search Tutors", "Search", "Tutor", null, null)
+                                @Html.ActionLink("Search Tutor", "SearchTutor", "Student", null, null)
                             </li>
-                            <li>
+                            @*<li>
                                 @Html.ActionLink("FAQ", "Faq", "Home", null, null)
                             </li>
                             <li>
                                 @Html.ActionLink("Contact Us", "Contact", "Home", null, null)
-                            </li>
+                            </li>*@
                             
                         </ul>
                     </div>
@@ -74,7 +79,8 @@
                         <ul class="nav navbar-nav">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                @Html.Action("LoadProfile", "Account")
+                                @Html.Partial("_LoginPartial")
+                                
                             }
                             else
                             {
@@ -100,7 +106,13 @@
 
     <footer class="main-footer">
         <div class="container">
-            <strong>Tutor Guide &copy; 2016</strong> All rights reserved.
+            <span class="pull-left">
+                <strong>Tutor Guide &copy; 2016</strong> All rights reserved.
+            </span>
+            <span class="pull-right">
+                @Html.ActionLink("FAQ", "FAQ", "Home", null, null) | 
+                @Html.ActionLink("Contact Us", "Contact", "Home", null, null)
+            </span>
         </div>
     </footer>
 

@@ -50,6 +50,7 @@
                                     @Html.LabelFor(model => model.Version, "Version", htmlAttributes: new { @class = "" })
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
+                                    @*@Html.HiddenFor(model => model.VersionList)*@
                                     @Html.DropDownListFor(model => model.Version, Model.VersionList, new { @class="form-control" })
                                     @Html.ValidationMessageFor(model => model.Version, "", new { @class = "text-danger" })
                                 </div>
@@ -61,6 +62,7 @@
                                     @Html.LabelFor(model => model.Class, "Class", htmlAttributes: null)
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
+                                    @*@Html.HiddenFor(model => model.ClassList)*@
                                     @Html.DropDownListFor(model => model.Class, Model.ClassList, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
                                 </div>

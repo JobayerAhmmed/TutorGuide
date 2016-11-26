@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TutorGuide.Models;
 
 namespace TutorGuide.ViewModels
 {
@@ -59,8 +60,8 @@ namespace TutorGuide.ViewModels
         public string InterestedSubjects { get; set; }
         //public string InterestedAreas { get; set; }
 
-        public IEnumerable<DataItem> Departments { get; set; }
-        public IEnumerable<DataItem> Years { get; set; }
+        public IEnumerable<Department> Departments { get; set; }
+        public IEnumerable<Year> Years { get; set; }
         public List<CheckBoxListItem> Classes { get; set; }
         //public List<CheckBoxListItem> Subjects { get; set; }
         public List<CheckBoxListItem> Areas { get; set; }
@@ -71,8 +72,8 @@ namespace TutorGuide.ViewModels
             {
                 var departments = Departments.Select(d => new SelectListItem
                 {
-                    Value = d.Value,
-                    Text = d.Value,
+                    Value = d.Name,
+                    Text = d.Name,
                     Selected = false
                 });
                 return departments;
@@ -84,8 +85,8 @@ namespace TutorGuide.ViewModels
             {
                 var years = Years.Select(d => new SelectListItem
                 {
-                    Value = d.Value,
-                    Text = d.Value,
+                    Value = d.Name,
+                    Text = d.Name,
                     Selected = false
                 });
                 return years.ToList();

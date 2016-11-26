@@ -98,84 +98,13 @@ namespace TutorGuide.Controllers
             Data data = new Data();
             RegisterTutorViewModel model = new RegisterTutorViewModel();
 
-            List<DataItem> subjects = new List<DataItem>();
-            subjects.Add(new DataItem() { Value = "Bengali" });
-            subjects.Add(new DataItem() { Value = "English" });
-            subjects.Add(new DataItem() { Value = "Accounting" });
-            subjects.Add(new DataItem() { Value = "Finance" });
-            subjects.Add(new DataItem() { Value = "Physics" });
-            subjects.Add(new DataItem() { Value = "Information Technology" });
-            subjects.Add(new DataItem() { Value = "Mathematics" });
-            subjects.Add(new DataItem() { Value = "Psychology" });
-            subjects.Add(new DataItem() { Value = "Microbiology" });
-
-            List<DataItem> years = new List<DataItem>();
-            years.Add(new DataItem() { Value = "1st Year" });
-            years.Add(new DataItem() { Value = "2nd Year" });
-            years.Add(new DataItem() { Value = "3rd Year" });
-            years.Add(new DataItem() { Value = "4th Year" });
-            years.Add(new DataItem() { Value = "MS 1st Year" });
-            years.Add(new DataItem() { Value = "MS 2nd Year" });
-
-
-            //{
-            //    "Bengali",
-            //        "English",
-            //        "History",
-            //        "Finance",
-            //        "Accounting",
-            //        "Marketing",
-            //        "Banking",
-            //        "Management Studies",
-            //        "Tourism and Hospitality Management",
-            //        "Botany",
-            //        "Soil, Water and Environment",
-            //        "Microbiology",
-            //        "Biochemistry and Molecular Biology",
-            //        "Fisheries",
-            //        "Genetic Engineering and Bio-technology",
-            //        "Psychology",
-            //        "Zoology",
-            //        "Electrical and Electronic Engineering",
-            //        "Applied Chemistry and Chemical Engineering",
-            //        "Computer Science and Engineering",
-            //        "Nuclear Engineering",
-            //        "Graphic Design",
-            //        "Drawing and Painting",
-            //        "Law",
-            //        "Pharmacy",
-            //        "Mathematics",
-            //        "Applied Mathematics",
-            //        "Physics",
-            //        "Statistics",
-            //        "Chemistry",
-            //        "Economics",
-            //        "Sociology",
-            //        "Geography",
-            //        "Statistical Research and Training",
-            //        "Business Administration",
-            //        "Nutrition and Food Science",
-            //        "Information Technology",
-            //        "Leather Engineering and Technology"
-            //    };
-            //List<string> years = new List<string>
-            //    {
-            //        "1st Year",
-            //        "2nd Year",
-            //        "3rd Year",
-            //        "4th Year",
-            //        "MS 1st Year",
-            //        "Ms 2nd Year"
-            //    };
-
-            //model.Departments = data.Subjects;
-            //model.Years = data.Years;
-            model.Departments = subjects;
-            model.Years = years;
+            var departments = _dbContext.Departments.ToList();
+            model.Departments = departments;
+            model.Years = _dbContext.Years.ToList();
 
             var classes = new List<CheckBoxListItem>();
-            //var departments = new List<CheckBoxListItem>();
             var areas = new List<CheckBoxListItem>();
+
 
             foreach (var item in data.Classes)
             {
@@ -186,15 +115,7 @@ namespace TutorGuide.Controllers
                     IsChecked = false
                 });
             }
-            //foreach (var item in data.Subjects)
-            //{
-            //    departments.Add(new CheckBoxListItem()
-            //    {
-            //        Value = item,
-            //        Text = item,
-            //        IsChecked = false
-            //    });
-            //}
+            
             foreach (var item in data.Areas)
             {
                 areas.Add(new CheckBoxListItem()
@@ -206,7 +127,6 @@ namespace TutorGuide.Controllers
             }
 
             model.Classes = classes;
-            //model.Subjects = departments;
             model.Areas = areas;
 
             return View(model);

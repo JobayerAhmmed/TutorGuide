@@ -12,4 +12,15 @@
             .then(function(response) {
                 $scope.allTutor = response.data;
             });
+
+        $scope.showDetails = function (id) {
+
+            window.location.href = "/Tutor/Details?id="+id;
+            
+        }
+        $scope.showPost = function (id) {
+
+            window.location.href = "/Post/Details?id=" + id;
+
+        }
     });

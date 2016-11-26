@@ -33,6 +33,7 @@
                 <th>Version</th>
                 <th>Subjects</th>
                 <th>Days Per Week</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +43,8 @@
                 <td>{{post.Class}}</td>
                 <td>{{post.Version}}</td>
                 <td>{{post.Subjects}}</td>
-                <td>{{provider.DaysPerWeek}}</td>
+                <td>{{post.DaysPerWeek}}</td>
+                <td><button class="btn btn-primary btn-flat" ng-click="showPost(post.Id)">Details</button></td>
             </tr>
         </tbody>
     </table>

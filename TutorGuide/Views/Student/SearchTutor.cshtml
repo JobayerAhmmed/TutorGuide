@@ -5,21 +5,24 @@
 
 <h2>Search Tutor</h2>
 
-<div ng-app="systemApp" ng-controller="searchCtrl">
+<div ng-app="systemApp" ng-controller="searchCtrl" class="container">
     
     <label>Search by any field <input type="text" ng-model="search.$" /></label><br /><br />
-    <label>Search by the following info</label><br />
+    
     <div class="row">
         <div class="col-md-3">
             <label>Department/Subject</label>&nbsp;<input type="text" ng-model="search.Department" />
         </div>
         <div class="col-md-3">
+            <br />
             <label>Year</label>&nbsp;<input type="text" ng-model="search.CurrentYear" />
         </div>
         <div class="col-md-3">
+            <br />
             <label>Location</label>&nbsp;<input type="text" ng-model="search.PresentAddress" />
         </div>
         <div class="col-md-3">
+            <br />
             <label>Interested Class</label>&nbsp;<input type="text" ng-model="search.InterestedClass" />
         </div>
         
@@ -35,6 +38,7 @@
             <th>ExpectedSalaryRange</th>
             <th>InterestedClass</th>
             <th>InterestedSubject</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -46,6 +50,7 @@
                 <td>{{tutor.ExpectedSalaryRange}}</td>
                 <td>{{tutor.InterestedClass}}</td>
                 <td>{{tutor.InterestedSubject}}</td>
+                <td><button class="btn btn-primary btn-flat" ng-click="showDetails(tutor.Id)">Details</button></td>
             </tr>
         </tbody>
     </table>

@@ -1,9 +1,9 @@
 ﻿@using Microsoft.AspNet.Identity
-@model TutorGuide.ViewModels.ProfileViewModel
+@*@model TutorGuide.ViewModels.ProfileViewModel*@
 
 @if (Request.IsAuthenticated)
 {
-    <li class="dropdown messages-menu">
+    @*<li class="dropdown messages-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
             <span class="label label-success">4</span>
@@ -35,34 +35,19 @@
             </li>
             <li class="footer"><a href="#">See All Messages</a></li>
         </ul>
-    </li>
+    </li>*@
 
-    <li class="dropdown user user-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="@Url.Content("~/Content/UserImage/" + @Model.ImagePath)" class="user-image" alt="">
-            <span class="hidden-xs">@Model.Name</span>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="user-header">
-                <img src="@Url.Content("~/Content/UserImage/" + @Model.ImagePath)" class="img-circle" alt="Image">
-                <p>
-                    @Model.Name
-                </p>
-            </li>
-            <li class="user-footer">
+       
+            
+            <li>
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="pull-left">
-                        @Html.ActionLink("Profile", "", "", new { area = "", id = Model.Id },
-                            htmlAttributes: new { title = "Manage", @class = "btn btn-default btn-flat" })
-                    </div>
+                    
                     <div class="pull-right">
-                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Sign out</a>
+                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-primary btn-flat">Sign out</a>
                     </div>
                 }
             </li>
-        </ul>
-    </li>  
 }
     

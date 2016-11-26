@@ -12,7 +12,5 @@ namespace TutorGuide.Models
         public int Id { get; set; }
         public int PostId { get; set; }
         public int TutorId { get; set; }
-        public string PhoneNumber { get; set; }
-        public DateTime Date { get; set; }
     }
 }

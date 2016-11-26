@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TutorGuide.Models;
 
 namespace TutorGuide.ViewModels
 {
@@ -38,7 +39,6 @@ namespace TutorGuide.ViewModels
 
         public string Version { get; set; }
 
-        [Required(ErrorMessage = "Please select class")]
         public string Class { get; set; }
 
         [StringLength(100, ErrorMessage = "Name must be at least 5 characters long", MinimumLength = 5)]
@@ -52,8 +52,8 @@ namespace TutorGuide.ViewModels
         public string FatherOccupation { get; set; }
         public string PresentAddress { get; set; }
         public string PermanentAddress { get; set; }
-        public IEnumerable<string> Versions { get; set; }
-        public IEnumerable<string> Classes { get; set; }
+        public IEnumerable<ClassVersion> Versions { get; set; }
+        public IEnumerable<Class> Classes { get; set; }
 
         public IEnumerable<SelectListItem> VersionList
         {
@@ -61,8 +61,8 @@ namespace TutorGuide.ViewModels
             {
                 var versions = Versions.Select(d => new SelectListItem
                 {
-                    Value = d,
-                    Text = d,
+                    Value = d.Name,
+                    Text = d.Name,
                     Selected = false
                 });
                 return versions.ToList();
@@ -74,8 +74,8 @@ namespace TutorGuide.ViewModels
             {
                 var classes = Classes.Select(d => new SelectListItem
                 {
-                    Value = d,
-                    Text = d,
+                    Value = d.Name,
+                    Text = d.Name,
                     Selected = false
                 });
                 return classes.ToList();

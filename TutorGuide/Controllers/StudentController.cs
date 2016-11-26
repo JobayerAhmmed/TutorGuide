@@ -50,11 +50,11 @@ namespace TutorGuide.Controllers
         [HttpGet]
         public ActionResult RegisterStudent()
         {
-            Data data = new Data();
+            //Data data = new Data();
             RegisterStudentViewModel model = new RegisterStudentViewModel();
 
-            model.Versions = data.Versions;
-            model.Classes = data.Classes;
+            model.Versions = _dbContext.Versions.ToList();
+            model.Classes = _dbContext.Classes.ToList();
 
             return View(model);
         }

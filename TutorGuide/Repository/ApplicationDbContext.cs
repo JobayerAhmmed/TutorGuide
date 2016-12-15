@@ -19,6 +19,7 @@ namespace TutorGuide.Repository
         public DbSet<TutorProfile> TutorProfiles { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Communication> Communications { get; set; }
+        public DbSet<FAQ> Faqs { get; set; }
 
         public static ApplicationDbContext Create()
         {

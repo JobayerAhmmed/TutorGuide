@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Post Details";
+    
 }
 
 <section class="content-header text-center">
@@ -52,7 +53,8 @@
                     @Html.ActionLink("Back to Post List", "Index", "Post", null,
                             new { @class = "btn btn-primary btn-flat" })
                     <span class="pull-right">
-                        @Html.ActionLink("Show Interest", "", "", null, new { @class = "btn btn-info btn-flat" })
+                        <div class="btn btn-info btn-flat" ng-click="showInterest()">Show Interest</div>
+                        @Html.ActionLink("Show Interest", "", "", null, new {@class = "btn btn-info btn-flat"})
                     </span>
                 </div>
             </div>

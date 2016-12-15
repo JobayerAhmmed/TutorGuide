@@ -16,5 +16,6 @@ namespace TutorGuide.Models
         public bool IsNegotiable { get; set; }
         public int DaysPerWeek { get; set; }
         public string Subjects { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }

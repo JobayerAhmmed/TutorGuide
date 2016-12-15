@@ -188,20 +188,27 @@
     <Compile Include="Migrations\201611251759312_DateRemoved.Designer.cs">
       <DependentUpon>201611251759312_DateRemoved.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611260523580_Unkonw.cs" />
-    <Compile Include="Migrations\201611260523580_Unkonw.Designer.cs">
-      <DependentUpon>201611260523580_Unkonw.cs</DependentUpon>
+    <Compile Include="Migrations\201611260436462_Data.cs" />
+    <Compile Include="Migrations\201611260436462_Data.Designer.cs">
+      <DependentUpon>201611260436462_Data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611260810471_Date.cs" />
+    <Compile Include="Migrations\201611260810471_Date.Designer.cs">
+      <DependentUpon>201611260810471_Date.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Communication.cs" />
-    <Compile Include="Models\FAQ.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\StudentProfile.cs" />
     <Compile Include="Models\TutorProfile.cs" />
+    <Compile Include="Models\ClassVersion.cs" />
     <Compile Include="Models\ViewModel\PostViewModel.cs" />
+    <Compile Include="Models\Year.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
     <Compile Include="Startup.cs" />
@@ -1089,13 +1096,17 @@
     <Content Include="Content\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\UserImage\1.png" />
+    <Content Include="Content\UserImage\2.png" />
+    <Content Include="Content\UserImage\3.png" />
+    <Content Include="Content\UserImage\4.png" />
+    <Content Include="Content\UserImage\5.png" />
+    <Content Include="Content\UserImage\6.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\angular\HomeCtrl.js" />
     <Content Include="Scripts\angular\SearchCtrl.js" />
-    <Content Include="Scripts\angular\StudentCtrl.js" />
     <Content Include="Scripts\angular\SystemApp.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1202,7 +1213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\UserImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1222,8 +1232,11 @@
     <EmbeddedResource Include="Migrations\201611251759312_DateRemoved.resx">
       <DependentUpon>201611251759312_DateRemoved.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611260523580_Unkonw.resx">
-      <DependentUpon>201611260523580_Unkonw.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611260436462_Data.resx">
+      <DependentUpon>201611260436462_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611260810471_Date.resx">
+      <DependentUpon>201611260810471_Date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

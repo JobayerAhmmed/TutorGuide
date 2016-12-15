@@ -59,24 +59,24 @@ namespace TutorGuide.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var userId = User.Identity.GetUserId();
-                var user = UserManager.FindById(userId);
+                //var userId = User.Identity.GetUserId();
+                //var user = UserManager.FindById(userId);
 
-                var profile = new ProfileViewModel();
-                profile.Id = user.Id;
+                //var profile = new ProfileViewModel();
+                //profile.Id = user.Id;
 
-                if (User.IsInRole("Student"))
-                {
-                    var student = context.StudentProfiles.Find(userId);
-                    profile.Name = student.Name;
-                }else if (User.IsInRole("Tutor"))
-                {
-                    var tutor = context.TutorProfiles.Find(userId);
-                    profile.Name = tutor.Name;
-                    profile.ImagePath = tutor.ImagePath;
-                }
+                //if (User.IsInRole("Student"))
+                //{
+                //    var student = context.StudentProfiles.Find(userId);
+                //    profile.Name = student.Name;
+                //}else if (User.IsInRole("Tutor"))
+                //{
+                //    var tutor = context.TutorProfiles.Find(userId);
+                //    profile.Name = tutor.Name;
+                //    profile.ImagePath = tutor.ImagePath;
+                //}
 
-                return PartialView("_LoginPartial", profile);
+                //return PartialView("_LoginPartial");
             }
 
             return null;
@@ -87,11 +87,11 @@ namespace TutorGuide.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-                return RedirectToAction("Login", "Account", new { returnUrl = returnUrl });
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //    return RedirectToAction("Login", "Account", new { returnUrl = returnUrl });
+            //}
             ViewBag.ReturnUrl = null;
             return View();
         }

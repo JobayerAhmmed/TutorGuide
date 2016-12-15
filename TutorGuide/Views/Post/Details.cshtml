@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Post Details";
-    
 }
 
 <section class="content-header text-center">
@@ -52,10 +51,13 @@
                 <div class="box-footer">
                     @Html.ActionLink("Back to Post List", "Index", "Post", null,
                             new { @class = "btn btn-primary btn-flat" })
-                    <span class="pull-right">
-                        <div class="btn btn-info btn-flat" ng-click="showInterest()">Show Interest</div>
-                        @Html.ActionLink("Show Interest", "", "", null, new {@class = "btn btn-info btn-flat"})
-                    </span>
+                    @if (User.IsInRole("Tutor"))
+                    {
+                        <span class="pull-right">
+                            @Html.ActionLink("Show Interest", "ShowInterest", "Post", new { postId = Model.Id }, new { @class = "btn btn-info btn-flat" })
+                        </span>
+                    }
+                    
                 </div>
             </div>
         </div>

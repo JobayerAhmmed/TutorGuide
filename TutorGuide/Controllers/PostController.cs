@@ -71,6 +71,7 @@ namespace TutorGuide.Controllers
             }
 
             PostDetailsViewModel model = new PostDetailsViewModel();
+            model.Id = post.Id;
             model.Class = student.Class;
             model.DaysPerWeek = post.DaysPerWeek;
             model.InstituteName = student.InstituteName;
@@ -82,6 +83,25 @@ namespace TutorGuide.Controllers
             model.Version = student.Version;
 
             return View(model);
+        }
+
+        public ActionResult ShowInterest(int postId)
+        {
+            string userId = User.Identity.GetUserId();
+            TutorProfile tutor = _dbContext.TutorProfiles.Where(t => t.UserId == userId).FirstOrDefault();
+            int tutorId = tutor.Id;
+
+            var model = new Communication
+            {
+                PostId = postId,
+                TutorId = tutorId
+                
+            };
+            _dbContext.Communications.Add(model);
+            _dbContext.SaveChanges();
+
+            string msg = "Your interest has been saved.";
+            return RedirectToAction("Index", "Home", new { message = msg } );
         }
 
         [HttpGet]
@@ -105,8 +125,9 @@ namespace TutorGuide.Controllers
                 p.Salary = post.Salary;
                 p.Subjects = post.Subjects;
                 p.StudentId = student.Id;
+                //p.StudentId = 0;
 
-                _dbContext.Posts.Add(post);
+                _dbContext.Posts.Add(p);
                 _dbContext.SaveChanges();
 
                 return RedirectToAction("Index", "Post");
@@ -119,12 +140,18 @@ namespace TutorGuide.Controllers
             return View();
         }
 
+        //public ActionResult ShowInterest(int tutorId, int postId)
+        //{
+
+        //}
+
         public JsonResult GetAllPost()
         {
             var postVM = (from post in _dbContext.Posts
                           join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
                           select new PostViewModel
                           {
+                              Id  = post.Id,
                               Name = student.Name,
                               InstituteName = student.InstituteName,
                               Class = student.Class,

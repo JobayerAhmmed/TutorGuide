@@ -1,0 +1,38 @@
+﻿<script src="~/Scripts/angular/StudentCtrl.js"></script>
+@model IEnumerable<TutorGuide.ViewModels.PostIndexViewModel>
+
+@{
+    ViewBag.Title = "Tuition Posts";
+}
+
+<section class="content-header">
+    <h1 class="text-center">Tuition Posts</h1>
+</section>
+<div ng-app="systemApp" ng-controller="studentCtrl">
+
+    <section class="content">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @item.Class, Version: @item.Version, Subjects: @item.Subjects Location: @item.InstituteName<br />
+                            @item.DaysPerWeek per week, Payment: @item.Salary
+                        </div>
+                        <div class="panel-footer text-center">
+                            @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },
+                            new { @class = "btn btn-success btn-flat" })
+
+                            <button class="btn btn-success" ng-click="interestedTutor(@item.Id)">interested tutors</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </section>
+
+</div>
+    

@@ -60,6 +60,9 @@
                             @if (User.IsInRole("Student"))
                             {
                                 <li>
+                                    @Html.ActionLink("My Post", "MyPost", "Post", null, null)
+                                </li>
+                                <li>
                                     @Html.ActionLink("Post Tuition", "CreatePost", "Post", null, null)
                                 </li>
                             }

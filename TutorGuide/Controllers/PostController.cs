@@ -44,20 +44,62 @@ namespace TutorGuide.Controllers
         public ActionResult Index()
         {
             var postVM = (from post in _dbContext.Posts
-                join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
-                select new PostIndexViewModel
-                {
-                    Id = post.Id,
-                    InstituteName = student.InstituteName,
-                    Class = student.Class,
-                    Version = student.Version,
-                    Salary = post.Salary,
-                    DaysPerWeek = post.DaysPerWeek,
-                    Subjects = post.Subjects
-                }).ToList();
+                          join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
+                          select new PostIndexViewModel
+                          {
+                              Id = post.Id,
+                              InstituteName = student.InstituteName,
+                              Class = student.Class,
+                              Version = student.Version,
+                              Salary = post.Salary,
+                              DaysPerWeek = post.DaysPerWeek,
+                              Subjects = post.Subjects
+                          }).ToList();
 
-            
+
             return View(postVM);
+        }
+
+        public ActionResult MyPost()
+        {
+            var userId = User.Identity.GetUserId();
+            var studentProfile = _dbContext.StudentProfiles.Where(s => s.UserId == userId).FirstOrDefault();
+
+            var postVM = (from post in _dbContext.Posts
+                          where post.StudentId == studentProfile.Id
+                          join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
+                          select new PostIndexViewModel
+                          {
+                              Id = post.Id,
+                              InstituteName = student.InstituteName,
+                              Class = student.Class,
+                              Version = student.Version,
+                              Salary = post.Salary,
+                              DaysPerWeek = post.DaysPerWeek,
+                              Subjects = post.Subjects
+                          }).ToList();
+
+
+            return View(postVM);
+        }
+
+        public JsonResult InterestedTutor(int id)
+        {
+            var tutors = (from com in _dbContext.Communications
+                          where com.PostId == id
+                          join tutor in _dbContext.TutorProfiles on com.TutorId equals tutor.Id
+                          select new
+                          {
+                              Name = tutor.Name,
+                              PhoneNumber = tutor.PhoneNumber
+                          }).ToList();
+
+            return Json(tutors, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Interested()
+        {
+            return View();
         }
 
         public ActionResult Details(int id)
@@ -95,13 +137,19 @@ namespace TutorGuide.Controllers
             {
                 PostId = postId,
                 TutorId = tutorId
-                
+
             };
-            _dbContext.Communications.Add(model);
-            _dbContext.SaveChanges();
+            var isExist = _dbContext.Communications.FirstOrDefault(s => s.PostId == model.PostId && s.TutorId == model.TutorId);
+
+            if (isExist == null)
+            {
+                _dbContext.Communications.Add(model);
+                _dbContext.SaveChanges();
+            }
+            
 
             string msg = "Your interest has been saved.";
-            return RedirectToAction("Index", "Home", new { message = msg } );
+            return RedirectToAction("Index", "Home", new { message = msg });
         }
 
         [HttpGet]
@@ -151,7 +199,7 @@ namespace TutorGuide.Controllers
                           join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
                           select new PostViewModel
                           {
-                              Id  = post.Id,
+                              Id = post.Id,
                               Name = student.Name,
                               InstituteName = student.InstituteName,
                               Class = student.Class,

@@ -2,13 +2,13 @@
 @model LoginViewModel
 
 @{
-    ViewBag.Title = "Log in - Tutor Guide";
+    ViewBag.Title = "Tutor Guide";
 }
 
-<div class="login">
+<div class="login" style="max-width: 400px; margin: 50px auto 0;">
     <div id="loginForm" class="panel panel-success login-form">
-        <div class="panel-heading login-heading">
-            Log In
+        <div class="panel-heading login-heading text-center">
+            <h3>Log In</h3>
         </div>
         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
         {

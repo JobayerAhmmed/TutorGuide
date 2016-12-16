@@ -1,10 +1,10 @@
-﻿@{
+﻿@model TutorGuide.ViewModels.HomeIndexViewModel
+
+@{
     ViewBag.Title = "Tutor Guide";
 }
 
-<section class="content-header">
-
-</section>
+<section class="content-header"></section>
 
 <section class="content">
     @if (ViewBag.Message != null)
@@ -15,7 +15,62 @@
             </div>
         </div>
     }
-    
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1>Registered Tutors</h1>
+                </div>
+            </div>
+            @foreach (var item in Model.Tutors)
+            {
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <div class="box-body box-profile">
+                                <img src="@Url.Content("~/Content/UserImage/" + item.ImagePath)"
+                                     class="img-responsive user-img"
+                                     alt="Image" />
+                                <h3 class="profile-username text-center">@item.Name</h3>
+                                <p class="text-center">
+                                    <span class="text-bold">@item.Department</span>
+                                    <br /><span class="text-muted">@item.CurrentYear</span>
+                                </p>
+                            </div>
+                            <div class="box-footer text-center">
+                                @Html.ActionLink("Details", "Details", "Tutor", new { id = item.Id }, new { @class = "btn btn-primary btn-flat" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1>Recent Posts</h1>
+                </div>
+            </div>
+            @foreach (var item in Model.Posts)
+            {
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                @item.Class / @item.Subjects / @item.DaysPerWeek days / @item.Salary / @item.PresentAddress
+                            </div>
+                            <div class="panel-footer text-center">
+                                @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },
+                            new { @class = "btn btn-success btn-flat" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 </section>
 @section Scripts {
     <script>

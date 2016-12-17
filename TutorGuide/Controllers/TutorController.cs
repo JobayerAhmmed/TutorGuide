@@ -46,7 +46,7 @@ namespace TutorGuide.Controllers
         {
             List<TutorIndexViewModel> model = new List<TutorIndexViewModel>();
             TutorIndexViewModel vm = new TutorIndexViewModel();
-            var tutors = _dbContext.TutorProfiles.ToList();
+            var tutors = _dbContext.TutorProfiles.OrderByDescending(s => s.Id).ToList();
 
             foreach (var tutor in tutors)
             {
@@ -179,7 +179,7 @@ namespace TutorGuide.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult RegisterTutor([Bind(Exclude = "DepartmentList, YearList")]RegisterTutorViewModel model, HttpPostedFileBase file)
+        public ActionResult RegisterTutor(RegisterTutorViewModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -245,7 +245,9 @@ namespace TutorGuide.Controllers
                     _dbContext.TutorProfiles.Add(tutor);
                     _dbContext.SaveChanges();
 
-                    string msg = "Registration successful. Please log in to continue.";
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+
+                    string msg = "";
 
                     return RedirectToAction("Index", "Tutor", new { message = msg });
                 }

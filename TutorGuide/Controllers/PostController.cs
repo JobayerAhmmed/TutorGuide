@@ -44,6 +44,7 @@ namespace TutorGuide.Controllers
         public ActionResult Index()
         {
             var postVM = (from post in _dbContext.Posts
+                          where post.IsCompleted == false
                           join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
                           select new PostIndexViewModel
                           {
@@ -55,7 +56,7 @@ namespace TutorGuide.Controllers
                               DaysPerWeek = post.DaysPerWeek,
                               Subjects = post.Subjects,
                               PresentAddress = student.PresentAddress
-                          }).ToList();
+                          }).OrderByDescending(s => s.Id).ToList();
 
 
             return View(postVM);
@@ -77,8 +78,9 @@ namespace TutorGuide.Controllers
                               Version = student.Version,
                               Salary = post.Salary,
                               DaysPerWeek = post.DaysPerWeek,
-                              Subjects = post.Subjects
-                          }).ToList();
+                              Subjects = post.Subjects,
+                              IsCompleted = post.IsCompleted
+                          }).OrderByDescending(s => s.Id).ToList();
 
 
             return View(postVM);
@@ -102,7 +104,7 @@ namespace TutorGuide.Controllers
 
 
         public ActionResult Details(int id)
-        {
+         {
             Post post = _dbContext.Posts.Find(id);
             StudentProfile student = _dbContext.StudentProfiles.Find(post.StudentId);
 
@@ -112,7 +114,9 @@ namespace TutorGuide.Controllers
             }
 
             PostDetailsViewModel model = new PostDetailsViewModel();
+            ApplicationUser user = UserManager.FindById(student.UserId);
             model.Id = post.Id;
+            model.UserName = user.UserName;
             model.Class = student.Class;
             model.DaysPerWeek = post.DaysPerWeek;
             model.InstituteName = student.InstituteName;
@@ -211,6 +215,14 @@ namespace TutorGuide.Controllers
                               PresentAddress = student.PresentAddress
                           }).ToList();
             return Json(postVM, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeactivatePost(int id)
+        {
+            Post post = _dbContext.Posts.Find(id);
+            post.IsCompleted = true;
+            _dbContext.SaveChanges();
+            return RedirectToAction("MyPost", "Post");
         }
     }
 }

@@ -55,31 +55,31 @@ namespace TutorGuide.ViewModels
         public IEnumerable<ClassVersion> Versions { get; set; }
         public IEnumerable<Class> Classes { get; set; }
 
-        public IEnumerable<SelectListItem> VersionList
-        {
-            get
-            {
-                var versions = Versions.Select(d => new SelectListItem
-                {
-                    Value = d.Name,
-                    Text = d.Name,
-                    Selected = false
-                });
-                return versions.ToList();
-            }
-        }
-        public IEnumerable<SelectListItem> ClassList
-        {
-            get
-            {
-                var classes = Classes.Select(d => new SelectListItem
-                {
-                    Value = d.Name,
-                    Text = d.Name,
-                    Selected = false
-                });
-                return classes.ToList();
-            }
-        }
+        //public IEnumerable<SelectListItem> VersionList
+        //{
+        //    get
+        //    {
+        //        var versions = Versions.Select(d => new SelectListItem
+        //        {
+        //            Value = d.Name,
+        //            Text = d.Name,
+        //            Selected = false
+        //        });
+        //        return versions.ToList();
+        //    }
+        //}
+        //public IEnumerable<SelectListItem> ClassList
+        //{
+        //    get
+        //    {
+        //        var classes = Classes.Select(d => new SelectListItem
+        //        {
+        //            Value = d.Name,
+        //            Text = d.Name,
+        //            Selected = false
+        //        });
+        //        return classes.ToList();
+        //    }
+        //}
     }
 }

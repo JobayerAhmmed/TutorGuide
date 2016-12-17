@@ -9,6 +9,7 @@ namespace TutorGuide.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string UserName { get; set; }
         public string InstituteName { get; set; }
         public string Class { get; set; }
         public string Version { get; set; }

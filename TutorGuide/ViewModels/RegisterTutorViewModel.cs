@@ -66,32 +66,32 @@ namespace TutorGuide.ViewModels
         //public List<CheckBoxListItem> Subjects { get; set; }
         public List<CheckBoxListItem> Areas { get; set; }
 
-        public IEnumerable<SelectListItem> DepartmentList
-        {
-            get
-            {
-                var departments = Departments.Select(d => new SelectListItem
-                {
-                    Value = d.Name,
-                    Text = d.Name,
-                    Selected = false
-                });
-                return departments;
-            }
-        }
-        public IEnumerable<SelectListItem> YearList
-        {
-            get
-            {
-                var years = Years.Select(d => new SelectListItem
-                {
-                    Value = d.Name,
-                    Text = d.Name,
-                    Selected = false
-                });
-                return years.ToList();
-            }
-        }
+        //public IEnumerable<SelectListItem> DepartmentList
+        //{
+        //    get
+        //    {
+        //        var departments = Departments.Select(d => new SelectListItem
+        //        {
+        //            Value = d.Name,
+        //            Text = d.Name,
+        //            Selected = false
+        //        });
+        //        return departments.ToList();
+        //    }
+        //}
+        //public IEnumerable<SelectListItem> YearList
+        //{
+        //    get
+        //    {
+        //        var years = Years.Select(d => new SelectListItem
+        //        {
+        //            Value = d.Name,
+        //            Text = d.Name,
+        //            Selected = false
+        //        });
+        //        return years.ToList();
+        //    }
+        //}
         public RegisterTutorViewModel()
         {
             Classes = new List<CheckBoxListItem>();

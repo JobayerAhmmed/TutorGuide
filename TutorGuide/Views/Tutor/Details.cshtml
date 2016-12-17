@@ -64,12 +64,20 @@
                                 <td>Permanent Address</td>
                                 <td>@Model.PermanentAddress</td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
                 <div class="box-footer text-center">
-                    @Html.ActionLink("Back to Tutors", "Index", "Tutor", null, new { @class = "btn btn-primary btn-flat" })
+                    @if (User.IsInRole("Student"))
+                    {
+                        @Html.ActionLink("Back", "MyPost", "Post", null, new { @class = "btn btn-primary btn-flat" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Back to Tutors", "Index", "Tutor", null, new { @class = "btn btn-primary btn-flat" })
+                    }
+                    
                 </div>
             </div>
         </div>

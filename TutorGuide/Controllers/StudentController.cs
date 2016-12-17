@@ -53,8 +53,8 @@ namespace TutorGuide.Controllers
             //Data data = new Data();
             RegisterStudentViewModel model = new RegisterStudentViewModel();
 
-            model.Versions = _dbContext.Versions.ToList();
-            model.Classes = _dbContext.Classes.ToList();
+            //model.Versions = _dbContext.Versions.ToList();
+            //model.Classes = _dbContext.Classes.ToList();
 
             return View(model);
         }
@@ -62,7 +62,7 @@ namespace TutorGuide.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult RegisterStudent([Bind(Exclude = "VersionList, ClassList")]RegisterStudentViewModel model)
+        public ActionResult RegisterStudent(RegisterStudentViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -91,14 +91,17 @@ namespace TutorGuide.Controllers
 
                     _dbContext.StudentProfiles.Add(student);
                     _dbContext.SaveChanges();
-                    //SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    string msg = "Registration successful. Please log in to continue.";
+                    
+                    //string msg = "Registration successful. Please log in to continue.";
+                    string msg = "";
+
 
                     return RedirectToAction("Index", "Home", new { message = msg });
                 }

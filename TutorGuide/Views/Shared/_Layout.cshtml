@@ -76,9 +76,13 @@
                             <li>
                                 @Html.ActionLink("Tutors", "Index", "Tutor", null, null)
                             </li>
-                            <li>
-                                @Html.ActionLink("Search Tutor", "SearchTutor", "Student", null, null)
-                            </li>
+                            @if (!User.IsInRole("Tutor"))
+                            {
+                                <li>
+                                    @Html.ActionLink("Search Tutor", "SearchTutor", "Student", null, null)
+                                </li>
+                            }
+
                             @*<li>
                                 @Html.ActionLink("FAQ", "Faq", "Home", null, null)
                             </li>

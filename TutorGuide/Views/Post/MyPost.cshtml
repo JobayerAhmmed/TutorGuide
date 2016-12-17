@@ -17,8 +17,15 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                @item.Class, Version: @item.Version, Subjects: @item.Subjects Location: @item.InstituteName<br />
-                                @item.DaysPerWeek per week, Payment: @item.Salary
+                                @item.Subjects / @item.DaysPerWeek days per week / Payment: @item.Salary/= &nbsp; &nbsp;Post status:
+                                @if (item.IsCompleted)
+                                {
+                                    <strong><span style="color: red;"> Inactive</span></strong>
+                                }
+                                else
+                                {
+                                    <strong><span style="color: forestgreen;"> Active</span></strong>
+                                }
                             </div>
                             <div class="panel-footer text-center">
                                 @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },

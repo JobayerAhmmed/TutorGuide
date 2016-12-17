@@ -71,7 +71,22 @@
                                     @Html.LabelFor(model => model.Department, "Department", null)
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
-                                    @Html.DropDownListFor(model => model.Department, Model.DepartmentList, new { @class = "form-control" })
+                                    @*@Html.DropDownListFor(model => model.Department, Model.DepartmentList, new { @class = "form-control" })*@
+                                    <select name="Department" class="form-control">
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="English">English</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Pharmacy">Pharmacy</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Sociology">Sociology</option>
+                                        <option value="Statistics">Statistics</option>
+                                        <option value="Law">Law</option>
+                                    </select>
                                     @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
                                     @*@Html.HiddenFor(model => model.DepartmentList)*@
                                 </div>
@@ -83,7 +98,15 @@
                                     @Html.LabelFor(model => model.CurrentYear, "Current Year", htmlAttributes: null)
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
-                                    @Html.DropDownListFor(model => model.CurrentYear, Model.YearList, new { @class = "form-control" })
+                                    @*@Html.DropDownListFor(model => model.CurrentYear, Model.YearList, new { @class = "form-control" })*@
+                                    <select name="CurrentYear" class="form-control">
+                                        <option value="1st Year">1st Yea</option>
+                                        <option value="2nd Year">2nd Yea</option>
+                                        <option value="3rd Year">3rd Year</option>
+                                        <option value="4th Year">4th Year</option>
+                                        <option value="MS 1st Year">MS 1st Year</option>
+                                        <option value="MS 2nd Year">MS 2nd Year</option>
+                                    </select>
                                     @Html.ValidationMessageFor(model => model.CurrentYear, "", new { @class = "text-danger" })
                                 </div>
                             </div>

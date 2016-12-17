@@ -15,5 +15,6 @@ namespace TutorGuide.ViewModels
         public string Class { get; set; }
         public string Version { get; set; }
         public string PresentAddress { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }

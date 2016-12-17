@@ -14,5 +14,6 @@ namespace TutorGuide.ViewModels
         public string InstituteName { get; set; }
         public string Class { get; set; }
         public string Version { get; set; }
+        public string PresentAddress { get; set; }
     }
 }

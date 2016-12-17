@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201611260436462_Data.Designer.cs">
       <DependentUpon>201611260436462_Data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611260523580_Unkonw.cs" />
+    <Compile Include="Migrations\201611260523580_Unkonw.Designer.cs">
+      <DependentUpon>201611260523580_Unkonw.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201611260810471_Date.cs" />
     <Compile Include="Migrations\201611260810471_Date.Designer.cs">
       <DependentUpon>201611260810471_Date.cs</DependentUpon>
@@ -228,6 +232,7 @@
     <Compile Include="ViewModels\CheckBoxListItem.cs" />
     <Compile Include="ViewModels\Data.cs" />
     <Compile Include="ViewModels\DataItem.cs" />
+    <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\PostDetailsViewModel.cs" />
     <Compile Include="ViewModels\PostIndexViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
@@ -1252,6 +1257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611260436462_Data.resx">
       <DependentUpon>201611260436462_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611260523580_Unkonw.resx">
+      <DependentUpon>201611260523580_Unkonw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611260810471_Date.resx">
       <DependentUpon>201611260810471_Date.cs</DependentUpon>

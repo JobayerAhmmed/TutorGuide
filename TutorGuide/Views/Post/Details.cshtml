@@ -15,6 +15,17 @@
                 <div class="box-body box-profile">
                     <h3 class="profile-username text-center">@Model.Name</h3>
                     <p class="text-muted text-center">@Model.Class</p>
+                    <p class="text-center">
+                        Post status:
+                        @if (Model.IsCompleted)
+                        {
+                            <strong><span style="color: red;"> Inactive</span></strong>
+                        }
+                        else
+                        {
+                            <strong><span style="color: forestgreen;"> Active</span></strong>
+                        }
+                    </p>
                     <table class="table table-responsive table-bordered table-hover">
                         <tbody>
                             <tr>
@@ -28,7 +39,15 @@
                             <tr>
                                 <td>Ammount of Payment</td>
                                 <td>
-                                    @Model.Salary Negotiable: @Model.IsNegotiable
+                                    @Model.Salary
+                                    @if (Model.IsNegotiable)
+                                    {
+                                        <span>, Negotiable</span>
+                                    }
+                                    else
+                                    {
+                                        <span>, Non-negotiable</span>
+                                    }
                                 </td>
                             </tr>
                             <tr>
@@ -57,7 +76,7 @@
                             @Html.ActionLink("Show Interest", "ShowInterest", "Post", new { postId = Model.Id }, new { @class = "btn btn-info btn-flat" })
                         </span>
                     }
-                    
+
                 </div>
             </div>
         </div>

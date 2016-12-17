@@ -15,12 +15,11 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        @item.Class, Version: @item.Version, Subjects: @item.Subjects Location: @item.InstituteName<br />
-                        @item.DaysPerWeek per week, Payment: @item.Salary
+                        @item.Class / @item.Subjects / @item.DaysPerWeek days / @item.Salary / @item.PresentAddress
                     </div>
                     <div class="panel-footer text-center">
                         @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },
-                            new { @class="btn btn-success btn-flat" })
+                            new { @class = "btn btn-success btn-flat" })
                     </div>
                 </div>
             </div>

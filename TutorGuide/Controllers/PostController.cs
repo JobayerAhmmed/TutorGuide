@@ -53,7 +53,8 @@ namespace TutorGuide.Controllers
                               Version = student.Version,
                               Salary = post.Salary,
                               DaysPerWeek = post.DaysPerWeek,
-                              Subjects = post.Subjects
+                              Subjects = post.Subjects,
+                              PresentAddress = student.PresentAddress
                           }).ToList();
 
 
@@ -121,6 +122,7 @@ namespace TutorGuide.Controllers
             model.Salary = post.Salary;
             model.Subjects = post.Subjects;
             model.Version = student.Version;
+            model.IsCompleted = post.IsCompleted;
 
             return View(model);
         }

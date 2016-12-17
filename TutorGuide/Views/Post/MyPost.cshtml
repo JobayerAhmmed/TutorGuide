@@ -6,33 +6,57 @@
 }
 
 <section class="content-header">
-    <h1 class="text-center">Tuition Posts</h1>
+    <h1 class="text-center">My Posts</h1>
 </section>
 <div ng-app="systemApp" ng-controller="studentCtrl">
-
-    <section class="content">
-        @foreach (var item in Model)
-        {
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            @item.Class, Version: @item.Version, Subjects: @item.Subjects Location: @item.InstituteName<br />
-                            @item.DaysPerWeek per week, Payment: @item.Salary
-                        </div>
-                        <div class="panel-footer text-center">
-                            @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },
+    <div ng-show="myPost">
+        <section class="content">
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                @item.Class, Version: @item.Version, Subjects: @item.Subjects Location: @item.InstituteName<br />
+                                @item.DaysPerWeek per week, Payment: @item.Salary
+                            </div>
+                            <div class="panel-footer text-center">
+                                @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },
                             new { @class = "btn btn-success btn-flat" })
 
-                            <button class="btn btn-success" ng-click="interestedTutor(@item.Id)">interested tutors</button>
+                                <button class="btn btn-success" ng-click="interestedTutor(@item.Id)">Interested tutors</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
 
 
-    </section>
+        </section>
+    </div>
+    <div ng-show="!myPost">
+        <div ng-repeat="tutor in tutors">
+            <table class="table table-bordered table-hover table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Phone Number</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="tutor in tutors">
+                    <td>{{tutor.Name}}</td>
+                    <td>{{tutor.Department}}</td>
+                    <td>{{tutor.PhoneNumber}}</td>
+                    <td><button class="btn btn-primary" ng-click="tutorDetails(tutor.Id)">Details</button></td>
+                </tr>
+            </table>
 
+            <br />
+        </div><hr />
+        <div class="text-center">
+            <button class="btn btn-primary" ng-click="postBack()">Back</button>
+
+        </div>
+    </div>
 </div>
     

@@ -90,17 +90,15 @@ namespace TutorGuide.Controllers
                           join tutor in _dbContext.TutorProfiles on com.TutorId equals tutor.Id
                           select new
                           {
+                              Id = tutor.Id,
                               Name = tutor.Name,
+                              Department = tutor.Department,
                               PhoneNumber = tutor.PhoneNumber
                           }).ToList();
 
             return Json(tutors, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Interested()
-        {
-            return View();
-        }
 
         public ActionResult Details(int id)
         {

@@ -1120,6 +1120,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular\HomeCtrl.js" />
+    <Content Include="Scripts\angular\InterestedTution.js" />
     <Content Include="Scripts\angular\SearchCtrl.js" />
     <Content Include="Scripts\angular\StudentCtrl.js" />
     <Content Include="Scripts\angular\SystemApp.js" />
@@ -1226,7 +1227,7 @@
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Post\MyPost.cshtml" />
-    <Content Include="Views\Post\Interested.cshtml" />
+    <Content Include="Views\Tutor\InterestedTution.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

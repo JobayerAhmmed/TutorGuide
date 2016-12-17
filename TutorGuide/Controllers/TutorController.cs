@@ -92,6 +92,50 @@ namespace TutorGuide.Controllers
             return View(model);
         }
 
+        public ActionResult InterestedTution()
+        {
+            var userId = User.Identity.GetUserId();
+            var tutorId = _dbContext.TutorProfiles.Where(s => s.UserId == userId).FirstOrDefault().Id;
+
+            var tutions = from tution in _dbContext.Communications
+                          where tution.TutorId == tutorId
+                          join post in _dbContext.Posts on tution.PostId equals post.Id
+                          join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
+                          select new PostIndexViewModel
+                          {
+                              Id = post.Id,
+                              InstituteName = student.InstituteName,
+                              Class = student.Class,
+                              Version = student.Version,
+                              Salary = post.Salary,
+                              DaysPerWeek = post.DaysPerWeek,
+                              Subjects = post.Subjects
+                          };
+            return View(tutions);
+        }
+
+        //public JsonResult MyTution()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var tutorId = _dbContext.TutorProfiles.Where(s => s.UserId == userId).FirstOrDefault().Id;
+
+        //    var tutions = from tution in _dbContext.Communications
+        //                  where tution.TutorId == tutorId
+        //                  join post in _dbContext.Posts on tution.PostId equals post.Id
+        //                  join student in _dbContext.StudentProfiles on post.StudentId equals student.Id
+        //                  select new
+        //                  {
+        //                      Id = post.Id,
+        //                      InstituteName = student.InstituteName,
+        //                      Class = student.Class,
+        //                      Version = student.Version,
+        //                      Salary = post.Salary,
+        //                      DaysPerWeek = post.DaysPerWeek,
+        //                      Subjects = post.Subjects
+        //                  };
+        //    return Json(tutions, JsonRequestBehavior.AllowGet);
+        //}
+
         [HttpGet]
         public ActionResult RegisterTutor()
         {

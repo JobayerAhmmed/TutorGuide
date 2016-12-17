@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TutorGuide.ViewModels.PostIndexViewModel>
+
+@{
+    ViewBag.Title = "Interested Posts";
+}
+
+<section class="content-header">
+    <h1 class="text-center">Interested Posts</h1>
+</section>
+
+<section class="content">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        @item.Class, Version: @item.Version, Subjects: @item.Subjects Location: @item.InstituteName<br />
+                        @item.DaysPerWeek per week, Payment: @item.Salary
+                    </div>
+                    <div class="panel-footer text-center">
+                        @Html.ActionLink("Details", "Details", "Post", new { id = item.Id },
+                            new { @class = "btn btn-success btn-flat" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</section>
+

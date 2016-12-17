@@ -66,6 +66,12 @@
                                     @Html.ActionLink("Post Tuition", "CreatePost", "Post", null, null)
                                 </li>
                             }
+                            @if (User.IsInRole("Tutor"))
+                            {
+                                <li>
+                                    @Html.ActionLink("My Interested Tution", "InterestedTution", "Tutor", null, null)
+                                </li>
+                            }
                             
                             <li>
                                 @Html.ActionLink("Tutors", "Index", "Tutor", null, null)
